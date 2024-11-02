@@ -61,33 +61,33 @@ extern "C++" namespace pum {
 		return std::pair<double, double>(minim, maxim);
 	}*/
 
-	pointlineprojectresult distanceFromLinesegment(pum::vector2d a, pum::vector2d b, pum::vector2d p)
-	{
-		pointlineprojectresult result;
+	//pointlineprojectresult distanceFromLinesegment(pum::vector2d a, pum::vector2d b, pum::vector2d p)
+	//{
+	//	pointlineprojectresult result;
 
-		pum::vector2d ab = b - a;
-		pum::vector2d ap = p - a;
-		double dot = dotpro(ab, ap);
+	//	pum::vector2d ab = b - a;
+	//	pum::vector2d ap = p - a;
+	//	double dot = dotpro(ab, ap);
 
-		double d = dot / ab.lengthsquare();
-		pum::vector2d cp;
-		if (d <= 0.0)
-		{
-			cp = a;
-		}
-		else if (d >= 1.0)
-		{
-			cp = b;
-		}
-		else
-		{
-			cp = a + (ab * d);
-		}
+	//	double d = dot / ab.lengthsquare();
+	//	pum::vector2d cp;
+	//	if (d <= 0.0)
+	//	{
+	//		cp = a;
+	//	}
+	//	else if (d >= 1.0)
+	//	{
+	//		cp = b;
+	//	}
+	//	else
+	//	{
+	//		cp = a + (ab * d);
+	//	}
 
-		double dis = (cp - p).length();//; this->getmag(cp - p);
-		result.distance = dis;
-		result.projectionpoint = cp;
-		return result;
-	}
+	//	double dis = (cp - p).length();//; this->getmag(cp - p);
+	//	result.distance = dis;
+	//	result.projectionpoint = cp;
+	//	return result;
+	//}
 
 }

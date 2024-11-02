@@ -61,12 +61,12 @@ extern "C++" namespace pum {
 			return vector2d(this->x, this->y);
 		}
 
-		[[nodiscard]] bool operator==( vector2d& second)
+		[[nodiscard]] bool operator==(const vector2d& second) const
 		{
 			return ((this->x == second.x) && (this->y == second.y));
 		}
 
-		[[nodiscard]] bool operator!=(vector2d& second)
+		[[nodiscard]] bool operator!=(const vector2d& second) const
 		{
 			return ((this->x != second.x) || (this->y != second.y));
 		}
@@ -122,8 +122,7 @@ extern "C++" namespace pum {
 		return std::abs(diff) <= thr;
 	}
 
-	bool nearlyequal(vector2d a, vector2d b, long double thr);
-
+	
 	inline bool nearlyequal(vector2d a, vector2d b, long double thr)
 	{
 		vector2d diff = a - b;
@@ -135,6 +134,8 @@ extern "C++" namespace pum {
 	inline std::pair<long double, long double> projectcircle(pum::vector2d line, pum::vector2d point, double radius)
 	{
 		line.normalize();
+
+		pum::vector2d temp = (line * radius);
 		pum::vector2d left = point - line * radius;
 		pum::vector2d right = point + line * radius;
 		double dotleft = dotpro(line, left);

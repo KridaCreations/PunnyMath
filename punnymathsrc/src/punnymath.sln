@@ -7,6 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "punnymath", "punnymath.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "punnymathtest", "..\..\punnymathverificationproject\punnymathtest.vcxproj", "{FE9AF3EA-567B-43B1-BCD2-EE6E22AD48D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3EAF4A0C-54DD-483C-9A2C-AE781DAF3416}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\README.md = ..\..\README.md
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "..\..\tests\tests.vcxproj", "{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +38,14 @@ Global
 		{FE9AF3EA-567B-43B1-BCD2-EE6E22AD48D5}.Release|x64.Build.0 = Release|x64
 		{FE9AF3EA-567B-43B1-BCD2-EE6E22AD48D5}.Release|x86.ActiveCfg = Release|Win32
 		{FE9AF3EA-567B-43B1-BCD2-EE6E22AD48D5}.Release|x86.Build.0 = Release|Win32
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Debug|x64.ActiveCfg = Debug|x64
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Debug|x64.Build.0 = Debug|x64
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Debug|x86.ActiveCfg = Debug|Win32
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Debug|x86.Build.0 = Debug|Win32
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Release|x64.ActiveCfg = Release|x64
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Release|x64.Build.0 = Release|x64
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Release|x86.ActiveCfg = Release|Win32
+		{A44A1481-B67C-4DA2-B4CE-2C9A8781F32B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
