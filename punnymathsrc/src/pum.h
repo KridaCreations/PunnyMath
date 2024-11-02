@@ -1,6 +1,20 @@
 #pragma once
 #include <iostream>
 #include<math.h>
+#include<algorithm>
+#include<vector>
+
+
+// Sometimes libraries define max as a macro, which can lead to conflicts. You might find something like:
+//#define max ...
+//below lines are to remove this conflicts
+#ifdef max
+#undef max
+#endif
+//doing same for min
+#ifdef min
+#undef min
+#endif
 
 extern "C++" namespace pum {
 
@@ -70,8 +84,8 @@ extern "C++" namespace pum {
 		void normalize()
 		{
 			long double len = this->length();
-			this->x = this->x / len;
-			this->y = this->y / len;
+			this->x = this->x / (long double)len;
+			this->y = this->y / (long double)len;
 		}
 
 		void makelen(double newlen)
@@ -83,9 +97,14 @@ extern "C++" namespace pum {
 
 	};
 
+	struct pointlineprojectresult {
+		pum::vector2d projectionpoint = pum::vector2d(0, 0);
+		double distance = 0;
+	};
+
 	inline long double dotpro(vector2d a, vector2d b)
 	{
-		long double result = (a.x * a.y) + (b.x + b.y);
+		long double result = (a.x * b.x) + (a.y * b.y);
 		return result;
 	}
 
@@ -110,6 +129,64 @@ extern "C++" namespace pum {
 		vector2d diff = a - b;
 		long double mag = diff.length();
 		return mag <= thr;
+	}
+
+	
+	inline std::pair<long double, long double> projectcircle(pum::vector2d line, pum::vector2d point, double radius)
+	{
+		line.normalize();
+		pum::vector2d left = point - line * radius;
+		pum::vector2d right = point + line * radius;
+		double dotleft = dotpro(line, left);
+		double dotright = dotpro(line, right);
+		if (dotleft < dotright)
+			return std::pair<double, double>(dotleft, dotright);
+		return std::pair<double, double>(dotright, dotleft);
+	}
+
+	inline std::pair<double, double> projectpolygon(pum::vector2d line, std::vector<pum::vector2d>& points)
+	{
+		double minim = LLONG_MAX;
+		double maxim = LLONG_MIN;
+		for (int point = 0; point < points.size(); point++)
+		{
+			pum::vector2d p = points[point];
+			double val = dotpro(line, p);
+			minim = std::min(minim, val);
+			maxim = std::max(maxim, val);
+		}
+		return std::pair<double, double>(minim, maxim);
+	}
+
+	inline pointlineprojectresult distanceFromLinesegment(pum::vector2d a, pum::vector2d b, pum::vector2d p)
+	{
+
+		pointlineprojectresult result;
+
+		pum::vector2d ab = b - a;
+		pum::vector2d ap = p - a;
+		double dot = pum::dotpro(ab, ap);
+
+		double d = dot / ab.lengthsquare();
+		pum::vector2d cp;
+		if (d <= 0.0)
+		{
+			cp = a;
+		}
+		else if (d >= 1.0)
+		{
+			cp = b;
+		}
+		else
+		{
+			cp = a + (ab * d);
+		}
+
+		double dis = (cp - p).length();
+		result.distance = dis;
+		result.projectionpoint = cp;
+		return result;
+
 	}
 	
 }

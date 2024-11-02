@@ -30,4 +30,7 @@ int main()
     int _;
     std::cin >> _;
 
+    std::pair<long double, long double> temp = pum::projectcircle(pum::vector2d(1, 1), pum::vector2d(1, 1), 10.0);
+
+
 }
