@@ -24,9 +24,12 @@ int main()
     sum = a / 2;
     std::cout << sum.x << " " << sum.y << std::endl;
 
-    bool test = pum::nearlyequal(a,b,10000);
+    //bool test = pum::nearlyequal(a,b,10000);
 
-    std::cout << "result of nearlyequal " << test << std::endl;
+    //std::cout << "result of nearlyequal " << test << std::endl;
+
+    double x = pum::dotpro(a, b);
+    x = pum::crosspro(a, b);
     int _;
     std::cin >> _;
 

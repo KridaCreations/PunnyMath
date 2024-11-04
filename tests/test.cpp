@@ -329,3 +329,92 @@ TEST(DistanceFromLineSegmentTest, PointOutsideSegment) {
     pum::pointlineprojectresult result = distanceFromLinesegment(a, b, p);
     EXPECT_NEAR(result.distance, sqrt(2), 1e-5); // Expected distance to be √2
 }
+
+TEST(DegreeToRadianTest, ZeroDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(0), 0);
+}
+
+TEST(DegreeToRadianTest, NinetyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(90), 3.14159 / 2);
+}
+
+TEST(DegreeToRadianTest, OneEightyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(180), 3.14159);
+}
+
+TEST(DegreeToRadianTest, TwoSeventyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(270), 3 * 3.14159 / 2);
+}
+
+TEST(DegreeToRadianTest, ThreeSixtyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(360), 2 * 3.14159);
+}
+
+TEST(DegreeToRadianTest, FortyFiveDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(45), 3.14159 / 4);
+}
+
+TEST(DegreeToRadianTest, ThirtyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(30), 3.14159 / 6);
+}
+
+TEST(DegreeToRadianTest, NegativeNinetyDegrees) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(-90), -3.14159 / 2);
+}
+
+TEST(DegreeToRadianTest, OneDegree) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(1), 3.14159 / 180);
+}
+
+TEST(DegreeToRadianTest, LargeAngle) {
+    EXPECT_DOUBLE_EQ(pum::deg2rad(1800), 10 * 3.14159);
+}
+
+TEST(DegreeToRadianTest, LargeNonStandardAngle) {
+    EXPECT_NEAR(pum::deg2rad(1000), 1000 * 3.14159 / 180, 1e-5); // Using EXPECT_NEAR for floating-point comparison
+}
+
+
+TEST(RadianToDegreeTest, ZeroRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(0), 0);
+}
+
+TEST(RadianToDegreeTest, PiOverTwoRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(3.14159 / 2), 90);
+}
+
+TEST(RadianToDegreeTest, PiRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(3.14159), 180);
+}
+
+TEST(RadianToDegreeTest, ThreePiOverTwoRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(3 * 3.14159 / 2), 270);
+}
+
+TEST(RadianToDegreeTest, TwoPiRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(2 * 3.14159), 360);
+}
+
+TEST(RadianToDegreeTest, PiOverFourRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(3.14159 / 4), 45);
+}
+
+TEST(RadianToDegreeTest, PiOverSixRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(3.14159 / 6), 30);
+}
+
+TEST(RadianToDegreeTest, NegativePiOverTwoRadians) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(-3.14159 / 2), -90);
+}
+
+TEST(RadianToDegreeTest, OneRadian) {
+    EXPECT_NEAR(pum::rad2deg(1), 1 * (180.0 / 3.14159), 1e-5); // Using EXPECT_NEAR for floating-point comparison
+}
+
+TEST(RadianToDegreeTest, LargeAngle) {
+    EXPECT_DOUBLE_EQ(pum::rad2deg(10 * 3.14159), 10 * 180); // 10π radians
+}
+
+TEST(RadianToDegreeTest, LargeNonStandardAngle) {
+    EXPECT_NEAR(pum::rad2deg(1000), 1000 * (180.0 / 3.14159), 1e-5); // Using EXPECT_NEAR for floating-point comparison
+}
