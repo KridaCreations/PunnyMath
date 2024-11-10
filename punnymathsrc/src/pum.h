@@ -91,8 +91,11 @@ namespace pum {
 		void normalize()
 		{
 			long double len = this->length();
-			this->x = this->x / (long double)len;
-			this->y = this->y / (long double)len;
+			if (len != 0)
+			{
+				this->x = this->x / (long double)len;
+				this->y = this->y / (long double)len;
+			}
 		}
 
 		void makelen(double newlen)
