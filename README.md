@@ -6,3 +6,6 @@ to compile
 - open the "/punnymath/src/punnymath.sln" file in visual studio
 - this will open three projects "punnymath" ,"punnymathverificationproject" and "tests"
 "punnymath" folder is original project for the library and the "punnymathverificationproject" is for quick verification of the project.
+
+# Usage
+see this for [docs](/docs/README.md)
