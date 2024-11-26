@@ -120,17 +120,20 @@ The `vector2d` class is designed to represent and manipulate 2D vectors, offerin
 ## Usage Example
 
 ```cpp
-#include "vector2d.h"
+#include "pum.h"
 
-// Create two vectors
-vector2d v1(3.0, 4.0);
-vector2d v2(1.0, 2.0);
-
-// Add vectors
-vector2d result = v1 + v2;  // result is (4.0, 6.0)
-
-// Compute the length of a vector
-double len = v1.length();  // len is 5.0
-
-// Normalize the vector
-v1.normalize();  // v1 becomes (0.6, 0.8) since its length is 1
+int main()
+{
+  // Create two vectors
+  pum::vector2d v1(3.0, 4.0);
+  pum::vector2d v2(1.0, 2.0);
+  
+  // Add vectors
+  pum::vector2d result = v1 + v2;  // result is (4.0, 6.0)
+  
+  // Compute the length of a vector
+  double len = v1.length();  // len is 5.0
+  
+  // Normalize the vector
+  v1.normalize();  // v1 becomes (0.6, 0.8) since its length is 1
+}
